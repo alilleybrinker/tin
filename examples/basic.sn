@@ -1,0 +1,10 @@
+
+use std/io/println
+use std/env/args
+use std/string/to_upper
+use std/seq/{skip, take}
+
+fn main {
+    args ?> skip ?> take ?> to_upper |> println
+}
+
