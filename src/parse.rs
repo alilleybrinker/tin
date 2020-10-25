@@ -70,4 +70,17 @@ pub enum Literal<'prgrm> {
     Int(i64),
     Float(f64),
     Str(&'prgrm str),
+    Operator(Operator),
+    Keyword(Keyword),
+}
+
+#[derive(Debug)]
+pub enum Keyword {
+    Use
+}
+
+#[derive(Debug)]
+pub enum Operator {
+    ApplyRight,
+    QuestionApplyRight,
 }
