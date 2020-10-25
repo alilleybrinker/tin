@@ -50,9 +50,7 @@ pub enum Program<'prgrm> {
 }
 
 #[derive(Debug)]
-pub struct PathGlob<'prgrm> {
-    glob: &'prgrm str,
-}
+pub struct PathGlob<'prgrm>(&'prgrm str);
 
 impl<'prgrm> PathGlob<'prgrm> {
     /// Resolve any globs in the `PathGlob` to a vector of fully-realized paths.
