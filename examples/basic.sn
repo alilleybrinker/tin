@@ -1,10 +1,11 @@
 
-use std/io/println
-use std/env/args
-use std/string/to_upper
-use std/seq/{skip, take}
+use std:io:println;
 
 fn main {
-    args ?> skip ?> take ?> to_upper |> println
+    x = 5;
+    y = 10;
+    z = x + y;
+
+    println(f"${x} + ${y} = ${z}");
 }
 

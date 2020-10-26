@@ -1,6 +1,5 @@
-#![allow(dead_code)]
-
 use crate::error::Error;
+use crate::hir::*;
 use anyhow::{anyhow, Error as AnyError, Result};
 use nom::{
     character::complete::{line_ending, not_line_ending},
@@ -9,7 +8,6 @@ use nom::{
     sequence::terminated,
     Err, IResult,
 };
-use std::borrow::Cow;
 
 type ParseResult<I, O> = IResult<I, O, VerboseError<I>>;
 
@@ -22,7 +20,7 @@ pub fn parse(input: &str) -> Result<Program> {
 }
 
 fn parse_with_errors(input: &str) -> ParseResult<&str, Program> {
-    complete(line)(input).map(|(i, _)| (i, Program::Empty))
+    complete(line)(input).map(|(i, _)| (i, Program::empty()))
 }
 
 fn line(input: &str) -> ParseResult<&str, &str> {
@@ -41,46 +39,4 @@ fn handle_error(input: &str, error: Err<VerboseError<&str>>) -> AnyError {
     }
 
     anyhow!(Error::ParseFailed)
-}
-
-#[derive(Debug)]
-pub enum Program<'prgrm> {
-    Empty,
-    Use(PathGlob<'prgrm>)
-}
-
-#[derive(Debug)]
-pub struct PathGlob<'prgrm>(&'prgrm str);
-
-impl<'prgrm> PathGlob<'prgrm> {
-    /// Resolve any globs in the `PathGlob` to a vector of fully-realized paths.
-    fn resolve(&self) -> Vec<Path<'prgrm>> {
-        todo!()
-    }
-}
-
-// Path contains a `Cow` to avoid allocating in cases where no globs are used.
-#[derive(Debug)]
-pub struct Path<'prgrm>(Cow<'prgrm, str>);
-
-#[derive(Debug)]
-pub enum Literal<'prgrm> {
-    Ident(&'prgrm str),
-    Bool(bool),
-    Int(i64),
-    Float(f64),
-    Str(&'prgrm str),
-    Operator(Operator),
-    Keyword(Keyword),
-}
-
-#[derive(Debug)]
-pub enum Keyword {
-    Use
-}
-
-#[derive(Debug)]
-pub enum Operator {
-    ApplyRight,
-    QuestionApplyRight,
 }
