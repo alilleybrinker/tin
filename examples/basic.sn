@@ -6,6 +6,5 @@ fn main {
     y = 10;
     z = x + y;
 
-    println(f"${x} + ${y} = ${z}");
+    println("{} + {} = {}", x, y, z);
 }
-

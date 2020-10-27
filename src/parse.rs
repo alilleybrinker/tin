@@ -22,14 +22,59 @@ pub fn parse(input: &str) -> Result<Program> {
 }
 
 fn parse_with_errors(input: &str) -> ParseResult<&str, Program> {
-    complete(line)(input).map(|(i, _)| (i, Program::empty()))
+    complete(line)(input).map(|(i, _)| (i, Program(Vec::new())))
 }
 
 fn line(input: &str) -> ParseResult<&str, &str> {
     terminated(not_line_ending, line_ending)(input)
 }
 
-fn ident(_input: &str) -> ParseResult<&str, Program> {
+fn ident(_input: &str) -> ParseResult<&str, Ident<'_>> {
+    // idents can start with [a-zA-Z], but can then include [0-9] or -, _, +, >, <, *
+    todo!()
+}
+
+fn bool(_input: &str) -> ParseResult<&str, Bool<'_>> {
+    todo!()
+}
+
+fn ty(_input: &str) -> ParseResult<&str, Ty<'_>> {
+    todo!()
+}
+
+fn int(_input: &str) -> ParseResult<&str, Int<'_>> {
+    todo!()
+}
+
+fn float(_input: &str) -> ParseResult<&str, Float<'_>> {
+    todo!()
+}
+
+fn ustr(_input: &str) -> ParseResult<&str, UStr<'_>> {
+    todo!()
+}
+
+fn bstr(_input: &str) -> ParseResult<&str, BStr<'_>> {
+    todo!()
+}
+
+fn char(_input: &str) -> ParseResult<&str, Char<'_>> {
+    todo!()
+}
+
+fn symbol(_input: &str) -> ParseResult<&str, Symbol<'_>> {
+    todo!()
+}
+
+fn array(_input: &str) -> ParseResult<&str, Array<'_>> {
+    todo!()
+}
+
+fn tuple(_input: &str) -> ParseResult<&str, Tuple<'_>> {
+    todo!()
+}
+
+fn map(_input: &str) -> ParseResult<&str, Map<'_>> {
     todo!()
 }
 

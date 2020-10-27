@@ -24,30 +24,7 @@ use std::fmt::{Display, Formatter, Result as FmtResult};
 /// with the one requirement being the presence of a `main` function
 /// declaration.
 #[derive(Debug)]
-pub struct Program<'prgrm>(Vec<TopStmt<'prgrm>>);
-
-impl<'prgrm> Program<'prgrm> {
-    /// Construct an empty program.
-    pub fn empty() -> Program<'prgrm> {
-        Program(Vec::new())
-    }
-
-    /// Add a new statement to the program.
-    pub fn add_statement(&mut self, stmt: TopStmt<'prgrm>) -> &mut Self {
-        self.0.push(stmt);
-        self
-    }
-
-    /// View the existing statements.
-    pub fn statements(&self) -> &[TopStmt<'prgrm>] {
-        self.0.as_ref()
-    }
-
-    /// Mutably view the existing statements.
-    pub fn statements_mut(&mut self) -> &mut [TopStmt<'prgrm>] {
-        self.0.as_mut()
-    }
-}
+pub struct Program<'prgrm>(pub Vec<TopStmt<'prgrm>>);
 
 /// A top-level statement.
 ///
