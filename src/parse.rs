@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crate::error::Error;
 use crate::hir::*;
 use anyhow::{anyhow, Error as AnyError, Result};
@@ -39,4 +41,86 @@ fn handle_error(input: &str, error: Err<VerboseError<&str>>) -> AnyError {
     }
 
     anyhow!(Error::ParseFailed)
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+pub enum Keyword {
+    // use
+    Use,
+    // fn
+    Fn,
+    // return
+    Return,
+    // and
+    And,
+    // or
+    Or,
+    // xor
+    Xor,
+    // not
+    Not,
+    // if
+    If,
+    // else
+    Else,
+    // else if
+    ElseIf,
+    // unless
+    Unless,
+    // else unless
+    ElseUnless,
+    // loop
+    Loop,
+    // while
+    While,
+    // until
+    Until,
+    // for
+    For,
+    // in
+    In,
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+pub enum Operator {
+    // =
+    Assign,
+    // +
+    Add,
+    // -
+    Sub,
+    // *
+    Mul,
+    // /
+    Div,
+    // %
+    Rem,
+    // ^ (e.g. x ^ 2 == x * x)
+    Exp,
+    // +=
+    AddAssign,
+    // -=
+    SubAssign,
+    // *=
+    MulAssign,
+    // /=
+    DivAssign,
+    // %=
+    RemAssign,
+    // ^=
+    ExpAssign,
+    // == (equality of value)
+    Eq,
+    // @ (get identity)
+    Id,
+    // >
+    Greater,
+    // <
+    Less,
+    // >=
+    GreaterEq,
+    // <=
+    LessEq,
+    // !=
+    NotEq,
 }
