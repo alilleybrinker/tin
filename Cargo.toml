@@ -1,10 +1,21 @@
-[package]
-name = "tinc"
-version = "0.1.0"
-description = "A programming language that does what it says."
-authors = ["Andrew Lilley Brinker <andrewabrinker@gmail.com>"]
-edition = "2018"
 
-[dependencies]
-anyhow = "1.0.32"
-nom = "5.1.2"
+[workspace]
+members = [
+    # Defines the Tin HIR and parser.
+    "libraries/tinhir",
+    # Defines Foil, Tin's bytecode that runs on `foilvm`.
+    "libraries/tinfoil",
+    # Defines typechecking on Tin.
+    "libraries/tintypeck",
+    # Tin Tool, for managing Tin projects.
+    "tools/tint",
+    # The Tin compiler.
+    "tools/tinc",
+    # The Foil VM, for running bytecode.
+    "tools/foilvm",
+    # For formatting Tin code.
+    "tools/tinfmt",
+    # For managing Tin installations.
+    "tools/tinenv"
+]
+

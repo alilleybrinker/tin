@@ -1,0 +1,10 @@
+[package]
+name = "tinc"
+version = "0.1.0"
+description = "A programming language that does what it says."
+authors = ["Andrew Lilley Brinker <andrewabrinker@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.32"
+nom = "5.1.2"
