@@ -228,11 +228,11 @@ impl<'prgrm> Display for Comment<'prgrm> {
         use Comment::*;
 
         match self {
-            SingleLine(comment) => write!(f, "{}", comment),
+            SingleLine(comment) => write!(f, "{comment}"),
             // If multi-line, print all the lines.
             MultiLine(lines) => {
                 for line in lines {
-                    write!(f, "{}", line)?
+                    write!(f, "{line}")?
                 }
 
                 Ok(())
