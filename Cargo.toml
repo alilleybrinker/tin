@@ -1,21 +1,6 @@
 
 [workspace]
 members = [
-    # Defines the Tin HIR and parser.
-    "libraries/tinhir",
-    # Defines Foil, Tin's bytecode that runs on `foilvm`.
-    "libraries/tinfoil",
-    # Defines typechecking on Tin.
-    "libraries/tintypeck",
     # Tin Tool, for managing Tin projects.
     "tools/tint",
-    # The Tin compiler.
-    "tools/tinc",
-    # The Foil VM, for running bytecode.
-    "tools/foilvm",
-    # For formatting Tin code.
-    "tools/tinfmt",
-    # For managing Tin installations.
-    "tools/tinenv"
 ]
-
